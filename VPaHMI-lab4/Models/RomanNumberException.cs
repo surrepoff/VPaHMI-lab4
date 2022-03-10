@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPaHMI_lab4
+namespace VPaHMI_lab4.Models
 {
     public class RomanNumberException : Exception
     {

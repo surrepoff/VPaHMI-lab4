@@ -1,48 +1,48 @@
 ﻿using System;
 
-namespace VPaHMI_lab4
+namespace VPaHMI_lab4.Models
 {
     public class RomanNumber : ICloneable, IComparable
     {
-        private readonly ushort _number;
+        protected ushort _number;
 
         //Конструктор получает число n, которое должен представлять объект класса
-        public RomanNumber(ushort n)
+        public RomanNumber(ushort number)
         {
-            if (n <= 0) throw new RomanNumberException("ERROR: Number less than or equal to 0");
-            if (n > 3999) throw new RomanNumberException("ERROR: Number more than 3999");
-            _number = n;
+            if (number <= 0) throw new RomanNumberException("ERROR: Number less than or equal to 0");
+            if (number > 3999) throw new RomanNumberException("ERROR: Number more than 3999");
+            _number = number;
         }
 
         //Сложение римских чисел
-        public static RomanNumber operator + (RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator + (RomanNumber? first, RomanNumber? second)
         {
-            if (n1 == null || n2 == null) throw new RomanNumberException("ERROR: One or more numbers are null");
-            return new RomanNumber((ushort)(n1._number + n2._number));
+            if (first == null || second == null) throw new RomanNumberException("ERROR: One or more numbers are null");
+            return new RomanNumber((ushort)(first._number + second._number));
         }
 
         //Вычитание римских чисел
-        public static RomanNumber operator - (RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator - (RomanNumber? first, RomanNumber? second)
         {
-            if (n1 == null || n2 == null) throw new RomanNumberException("ERROR: One or more numbers are null");
-            if (n1._number <= n2._number) throw new RomanNumberException("ERROR: The second number is greater than or equal to the first number");
-            return new RomanNumber((ushort)(n1._number - n2._number));
+            if (first == null || second == null) throw new RomanNumberException("ERROR: One or more numbers are null");
+            if (first._number <= second._number) throw new RomanNumberException("ERROR: The second number is greater than or equal to the first number");
+            return new RomanNumber((ushort)(first._number - second._number));
         }
 
         //Умножение римских чисел
-        public static RomanNumber operator * (RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator * (RomanNumber? first, RomanNumber? second)
         {
-            if (n1 == null || n2 == null) throw new RomanNumberException("ERROR: One or more numbers are null");
-            if (n1._number * n2._number == 0) throw new RomanNumberException("ERROR: Result equal to 0");
-            return new RomanNumber((ushort)(n1._number * n2._number));
+            if (first == null || second == null) throw new RomanNumberException("ERROR: One or more numbers are null");
+            if (first._number * second._number == 0) throw new RomanNumberException("ERROR: Result equal to 0");
+            return new RomanNumber((ushort)(first._number * second._number));
         }
 
         //Целочисленное деление римских чисел
-        public static RomanNumber operator / (RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator / (RomanNumber? first, RomanNumber? second)
         {
-            if (n1 == null || n2 == null) throw new RomanNumberException("ERROR: One or more numbers are null");
-            if (n1._number / n2._number <= 0) throw new RomanNumberException("ERROR: Result less than or equal to 0");
-            return new RomanNumber((ushort)(n1._number / n2._number));
+            if (first == null || second == null) throw new RomanNumberException("ERROR: One or more numbers are null");
+            if (first._number / second._number <= 0) throw new RomanNumberException("ERROR: Result less than or equal to 0");
+            return new RomanNumber((ushort)(first._number / second._number));
         }
 
         //Возвращает строковое представление римского числа
